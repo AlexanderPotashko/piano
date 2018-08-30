@@ -1,0 +1,13 @@
+@import '../../../scss/all';
+
+.button {
+  color: $color-primary;
+  background: $color-secondary;
+  border: 1px solid $color-primary;
+  padding: .25em;
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-radius: 0em;
+  flex: 0 0 10em;
+}

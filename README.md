@@ -1,30 +1,17 @@
-# React Piano Task
+## Prepate App (apollo)
 
-Build a small piano application that can play sounds, as well as store and retrieve sequences of played keys (songs).
+- `cd ./apollo-server && npm install`
+- `npm install`
 
-*If anything here is unclear or any questions come to your mind, don’t hesitate to contact us - we’re here for you!*
+## Development
 
-## Implementation instructions
+- `npm dev`
+  - Start the dev server at [http://localhost:3000](http://localhost:3000)
+- `npm test`
+  - Start `jest` in watch mode
 
-- Focus on **clean, readable Code** and **Simplicity**
-- Use **React** for the Frontend
-- For the piano sounds you can use the [given files](#piano-sounds) files or any of your choice
+## Production
 
-## Minimum requirements
+- `npm run build && npm run prod`
+  - Bundle the JS and fire up the Express server for production + Apollo Server
 
-- Piano UI:
-    - Clickable black and white keys, which play a sound when clicked
-    - Visual feedback on touching the keys
-- Song storage & playback functionality:
-    - Show buttons to start/stop recording a sequence of keys
-    - Enable defining a song title
-    - Show a list of stored songs with title
-    - Enable replaying stored songs
-
-## Optional features
-
-- Store and retrieve the songs from a **GraphQL** server instead of from a local storage (sample server given here: [Apollo Server](apollo-server))
-
-## Piano Sounds
-
-The directory `grand-piano-mp3-sounds` contains sample sounds you can use for this task. Alternatively you can use sounds from `https://github.com/pffy/mp3-piano-sound` or other sample sounds of your preference.

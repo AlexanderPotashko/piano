@@ -1,0 +1,75 @@
+$grid-columns: 12;
+$grid-gutter-width-base: 20px;
+
+$grid-gutter-widths: (
+  xs: 10px,
+  sm: 10px,
+  md: $grid-gutter-width-base,
+  lg: $grid-gutter-width-base,
+  xl: $grid-gutter-width-base,
+  xxl: $grid-gutter-width-base
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 980px,
+  xl: 1220px,
+  xxl: 1380px
+);
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin container($gutters: $grid-gutter-widths) {
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+
+  @each $breakpoint in map-keys($gutters) {
+    @include media-breakpoint-up($breakpoint) {
+      $gutter: map-get($gutters, $breakpoint);
+      padding-right: ($gutter / 2);
+      padding-left: ($gutter / 2);
+    }
+  }
+}
+
+@mixin row($gutters: $grid-gutter-widths) {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+
+  @each $breakpoint in map-keys($gutters) {
+    @include media-breakpoint-up($breakpoint) {
+      $gutter: map-get($gutters, $breakpoint);
+      margin-right: ($gutter / -2);
+      margin-left: ($gutter / -2);
+    }
+  }
+}
+
+@mixin column($size, $columns: $grid-columns) {
+  flex: 0 0 percentage($size / $columns);
+  max-width: percentage($size / $columns);
+  box-sizing: border-box;
+}
+
+@mixin offset-column($size, $columns: $grid-columns) {
+  $num: $size / $columns;
+  margin-left: if($num == 0, 0, percentage($num));
+}

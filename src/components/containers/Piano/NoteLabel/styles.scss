@@ -1,0 +1,20 @@
+.label {
+  font-size: 12px;
+  text-align: center;
+  text-transform: capitalize;
+  user-select: none;
+}
+
+.accidental {
+  color: #f8e8d5;
+  margin-bottom: 3px;
+}
+
+.natural {
+  color: #888;
+  margin-bottom: 3px;
+
+  &.active {
+    color: #f8e8d5;
+  }
+}
